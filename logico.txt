@@ -1,0 +1,103 @@
+PACIENTE (dni, nombre, apellidos, teléfono, fecha_nacimiento)   
+
+CP: {dni}  
+
+ 
+
+CITA (codigo, fecha_cita, fecha_grabacion, observaciones, dni_paciente, codigo_centro)   
+
+CP: {codigo_cita}  
+
+CAj: {CITA.dni_paciente es clave ajena a PACIENTE.dni}  
+
+¿Acepta nulos?: NO 
+
+Borrado: RESTRINGIR, 
+
+Modificación: PROPAGAR 
+
+CAj: {CITA.codigo_centro es clave ajena a CENTRO.codigo}  
+
+¿Acepta nulos?: NO 
+
+Borrado: RESTRINGIR. 
+
+Modificación: RESTRINGIR.  
+
+ 
+
+CENTRO (codigo, direccion)   
+
+CP: {codigo} 
+
+ 
+
+ENFERMERO (codigo, dni, nombre, apellidos, codigo_centro)   
+
+CP: {codigo}  
+
+CAj: {ENFERMERO.codigo_centro es clave ajena a CENTRO.codigo}  
+
+¿Acepta nulos?: NO 
+
+Borrado: RESTRINGIR 
+
+Modificación:PROPAGAR 
+
+ 
+
+MUESTRA (codigo, fecha_recogida, codigo_enfermero, codigo_tecnico, dni_paciente)   
+
+CP: {codigo}  
+
+CAj: {MUESTRA.codigo_enfermero es clave ajena a ENFERMERO.codigo}  
+
+¿Acepta nulos?: NO.  
+
+Borrado: RESTRINGIR.  
+
+Modificación. RESTRINGIR 
+
+CAj: {MUESTRA.codigo_tecnico es clave ajena a TECNICO.codigo} 
+
+¿Acepta nulos?: SI.  
+
+Borrado: RESTRINGIR. 
+
+Modificación: PROPAGAR. 
+
+CAj: {MUESTRA.dni_paciente es clave ajena a PACIENTE.dni} 
+
+¿Acepta nulos?: NO 
+
+Borrado: RESTRINGIR. 
+
+Modificación: PROPAGAR. 
+
+ 
+
+TECNICO (codigo, dni, nombre, apellidos)   
+
+CP: {codigo}  
+
+ 
+
+RESULTADO (codigo, confirmado, codigo_muestra, codigo_tecnico)   
+
+CP: {codigo}  
+
+CAj: {RESULTADO.codigo_muestra es clave ajena a MUESTRA.codigo}  
+
+¿Acepta nulos?: NO 
+
+Borrado: RESTRINGIR 
+
+Modificación: RESTRINGIR 
+
+CAj: {RESULTADO.codigo_tecnico es clave ajena a TECNICO.codigo}  
+
+¿Acepta nulos?: NO 
+
+Borrado: RESTRINGIR 
+
+Modificación: RESTRINGIR 
