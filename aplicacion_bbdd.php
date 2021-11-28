@@ -7,7 +7,7 @@ $maquina = "localhost"; // cambiar por localhost si local o la máquina que indi
 $puerto = "5432";
 $bbdd = "database00000"; // cambiar por tu bbdd  
 $usuario = "postgres"; // cambiar por tu usuario
-$contrasenya = "112233"; // cambiar por tu contraseña
+$contrasenya = "######"; // cambiar por tu contraseña
 // Usar utf8_encode para que se muestren bien los caracteres con acentos y eñes (codifica un string ISO-8859-1 a UTF-8)
 // Establecer la conexión a bbdd PostgreSQL
 $conexion = pg_connect("host=$maquina port=$puerto dbname=$bbdd user=$usuario password=$contrasenya");
